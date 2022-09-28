@@ -8,7 +8,9 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .main{
         width:90%;
-        height:500px;
+        height:auto;
+        margin-left:auto;
+        margin-right:auto;
     }
     .bonjour{
         text-align : center;
@@ -16,18 +18,29 @@
     .container{
         width : 100%;
         height:auto;
+        
 
      
     }
     .container div{
-        display:inline-block;
-        background: yellow;
-        width:49%;
+        background:yellow;
+        width:30%;
         height:40px;
         text-align:center;
+        margin-left:auto;
+        margin-right:auto;
         font-size:20px;
-        margin-top:20px;
-        
+        margin-top:10px;
+        padding-top:10px;
+        border-radius:10px;
+                
+    }
+    .container div a{
+        text-decoration:none;
+        transition:0.5s;
+    }
+    .container div a:hover{
+        font-size:25px;
     }
     .start{
         text-align:center;
@@ -36,7 +49,9 @@
 </style>
 
 <div class="example-wrapper">
-    <h1 class="bonjour">Bonjour {{ controller_name }}!<br>    Quizzland</h1>
+    <h1 class="bonjour">Bonjour<br></h1>
+    <a href="#">S'incrire</a>
+
     <h2 class="start">Commencez votre quizz</h2>
 
     <ul>
@@ -44,39 +59,13 @@
         <li>Your template at <code><a href="{{ '/mnt/c/wamp64/www/wac/my_quiz/my_projet/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li> #}
     </ul>
 
-    <section class="main">
+</div>
 
-      <div class="container">
-       <div><a>Harry Potter</a></div>
-       <div><a>Sigles Françaisr</a></div>
-      </div>  
-
-          <div class="container">
-       <div><a>Définitions de motsr</a></div>
-       <div><a>Les spécialités culinaires</a></div>
-      </div>  
-
-          <div class="container">
-       <div><a>Séries TV : les simpson - partie 1</a></div>
-       <div><a>Séries TV : les simpson - partie 2</a></div>
-      </div>  
-
-          <div class="container">
-       <div><a>Séries TV : Stargate SG1</a></div>
-       <div><a>Séries TV : NCISr</a></div>
-      </div>  
-
-           <div class="container">
-       <div><a>Jeux de société</a></div>
-       <div><a>Programmation</a></div>
-      </div>  
-
-             <div class="container">
-       <div><a>Sigles informatiques</a></div>
-    
-      </div>  
-    
-    </section>
-
+<div class="main">
+{% for names in categorie %}
+        <div class="container">
+        <div><a href="/{{names.name}}/{{names.id}}">{{names.name}}</a></div>
+        </div>
+{% endfor %}
 </div>
 {% endblock %}
