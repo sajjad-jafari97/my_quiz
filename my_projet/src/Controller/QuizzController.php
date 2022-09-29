@@ -21,12 +21,22 @@ class QuizzController extends AbstractController
         $id_question = $questions[$key]->getId();
             array_push($tab,$id_question);
         }
-
-
-        $reponses = $reponse->findBy(['id_question' => $tab]);
+        // $test = array();
+        // foreach($tab as $key=>$val){
+        //     $test = $val;
+        // }
+        // dd($tab);
+       
         
-        // $rep = $reponses->find('id_question'=>)
+        $reponses = $reponse->findBy(['id_question' => $tab]);
 
+    
+        // $test = array();
+        // foreach($reponses as $key => $val){
+        // $id_test = $reponses[1]->;
+        //     array_push($test,$id_test);
+        // }
+        // dd($test);
 
         
 
@@ -37,14 +47,7 @@ class QuizzController extends AbstractController
             'reponsesQuizz' => $reponses,
         ]);
     }
-    // public function reponse(ReponseRepository $reponse,): Response
-    // {   
-    //     global $id_question;
-       
-    //     return $this->render('quizz/index.html.twig', [
 
-    //     ]);
-    // }
 
 
     

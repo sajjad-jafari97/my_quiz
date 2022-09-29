@@ -14,7 +14,7 @@ class Reponse
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $id_question = null;
+    public ?int $id_question = null;
 
     #[ORM\Column(length: 255)]
     private ?string $reponse = null;

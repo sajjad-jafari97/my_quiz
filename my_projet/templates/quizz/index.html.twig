@@ -6,19 +6,55 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    .question{
+        font-size:20px;
+        font-weight:bold;
+
+    }
+    .reponse{
+        font-size:15px;
+    }
+    .button{
+        background:blue;
+        color:white;
+        border:none;
+        width:120px;
+        height:40px;
+        font-size:15px;
+        border-radius:20px;
+        margin-top:20px;
+        float:right;
+        cursor: pointer;
+        transition:0.5s;
+    }
+    .button:hover{
+        width:140px;
+        height:50px;
+        font-size:20px;
+        cursu
+    }
+    .condition{
+        color:#329D68;
+    }
 </style>
 
 <div class="example-wrapper">
-    <h1>Quizz de categorie {{ nameCategorie }}</h1>
-
+    <h1>{{ nameCategorie }}</h1>
+    <p class="condition">Une seule réponse possible pour chaque question</p>
     <form method="get">
     {% for questions in questionQuizz %}
-    <p>{{questions.question}}</p>
+    <p class="question">{{questions.question}}</p>
     {% for reponses in reponsesQuizz %}
+
+    {% if reponses.id_question == questions.id %}
     <input type="checkbox" name="">
-    <label>{{reponses.reponse}}</label>
+    <label class="reponse">{{reponses.reponse}}</label></br>
+
+    {% endif %}
     {% endfor %}
     {% endfor %}
+    <input type="button" value="Enregistrer" class="button">
     </form>
 
 </div>
