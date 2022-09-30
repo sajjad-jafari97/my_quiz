@@ -6,15 +6,46 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .question{
+        font-size:20px;
+        font-weight:bold;
+
+    }
+    .lbReponse{
+        color:green;
+    }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{nameCategorie}}</h1>
+    {# {% set i = 0 %} #}
+     {% for questions in questionQuizz %}
+    <p class="question">{{questions.question}}</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/mnt/c/wamp64/www/wac/my_quiz/my_projet/src/Controller/ReponseController.php'|file_link(0) }}">src/Controller/ReponseController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/mnt/c/wamp64/www/wac/my_quiz/my_projet/templates/reponse/index.html.twig'|file_link(0) }}">templates/reponse/index.html.twig</a></code></li>
-    </ul>
+     {% for reponseU in reponseUtilisateur %}
+    
+        {% if reponseU.id_question == questions.id %}
+         {% if reponseU.reponse_expected == true %}
+    <p class="reponse">Vous avez bien répondu: <mark class="lbReponse">{{reponseU.reponse}}</mark></p>
+         {# {% set i = i + 1 %} #}
+    {% endif %}
+        {% if reponseU.reponse_expected == false %}
+         <p>Mauvaise réponse: {{reponseU.reponse}}</p>
+              {% for reponses in reponsesQuizz %}
+     {% if reponses.id_question == questions.id %}
+        {% if reponses.reponse_expected == true %}
+         <p class="reponse">La bonne réponse est: <mark class="lbReponse">{{reponses.reponse}}</mark></p>
+        {% endif %}
+             {% endif %}
+    {% endfor %}
+         {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% endfor %}
+
+    {# <p>Votre score: {% set i = i %}</p> #}
 </div>
+
+
 {% endblock %}

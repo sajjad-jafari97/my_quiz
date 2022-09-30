@@ -20,7 +20,7 @@ class Reponse
     private ?string $reponse = null;
 
     #[ORM\Column]
-    private ?int $reponse_expected = null;
+    public ?int $reponse_expected = null;
 
     public function getId(): ?int
     {

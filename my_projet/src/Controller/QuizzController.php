@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Reponse;
 use App\Repository\QuestionRepository;
 use App\Repository\ReponseRepository;
 use Doctrine\ORM\Mapping\Id;
@@ -21,33 +22,25 @@ class QuizzController extends AbstractController
         $id_question = $questions[$key]->getId();
             array_push($tab,$id_question);
         }
-        // $test = array();
-        // foreach($tab as $key=>$val){
-        //     $test = $val;
-        // }
-        // dd($tab);
-       
-        
         $reponses = $reponse->findBy(['id_question' => $tab]);
 
-    
-        // $test = array();
-        // foreach($reponses as $key => $val){
-        // $id_test = $reponses[1]->;
-        //     array_push($test,$id_test);
-        // }
-        // dd($test);
-
-        
-
-  
         return $this->render('quizz/index.html.twig', [
             'questionQuizz' => $questions,
-            'nameCategorie'=>$name, 
+            'nameCategorie'=>$name,
+            'idCategorie'=>$id, 
             'reponsesQuizz' => $reponses,
         ]);
     }
 
+    // public function submit(): Response
+    // {
+    //     if(isset($_POST["btnF"])){
+    //         echo"<script>alert('ouiiiii');</script>";
+    //     }
+    //     return $this->render('quizz/index.html.twig', [
+         
+    //     ]);
+    // }
 
 
     

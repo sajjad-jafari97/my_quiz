@@ -32,30 +32,34 @@
         width:140px;
         height:50px;
         font-size:20px;
-        cursu
     }
     .condition{
         color:#329D68;
-    }
+    } 
 </style>
 
 <div class="example-wrapper">
     <h1>{{ nameCategorie }}</h1>
     <p class="condition">Une seule réponse possible pour chaque question</p>
-    <form method="get">
+ 
+    <form action="{{path('app_reponse')}}"  method="get" >
+    <input type="hidden" name="idCategorie" value="{{idCategorie}}">
+    <input type="hidden" name="nameCategorie" value="{{nameCategorie}}">
     {% for questions in questionQuizz %}
     <p class="question">{{questions.question}}</p>
     {% for reponses in reponsesQuizz %}
 
-    {% if reponses.id_question == questions.id %}
-    <input type="checkbox" name="">
+    {% if reponses.id_question == questions.id %}   
+    <input type="radio" name="{{reponses.id_question}}" value="{{reponses.reponse}}" required>
     <label class="reponse">{{reponses.reponse}}</label></br>
+    
 
     {% endif %}
     {% endfor %}
     {% endfor %}
-    <input type="button" value="Enregistrer" class="button">
+        <input type="submit" value="Enregistrer" class="button" name="btnF">
     </form>
 
 </div>
+
 {% endblock %}
