@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Information Personnel</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+             <td>{{ user.email }}</td>
+             <td>{{ user.password }}</td>
+             <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+             <td>
+                 <a href="{{ path('app_c_r_u_d_show', {'id': user.id}) }}">show</a>
+                 <a href="{{ path('app_c_r_u_d_edit', {'id': user.id}) }}">edit</a>
+             </td>
+        </tr>
+        <a href="{{ path('app_login') }}">Retour</a>
+{% endblock %}

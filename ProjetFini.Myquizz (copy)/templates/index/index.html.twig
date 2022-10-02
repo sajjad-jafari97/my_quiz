@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+<style>
+.bg-image{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+    .example-wrapper {background-image:}
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('app_home') }}">Quizz</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" <a href="{{ path('app_c_r_u_d_index') }}">Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" <a href="{{ path('app_logout') }}">Deconnecté</a>
+        </li>  
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="bg-image" 
+     style="background-image: url('https://www.montpellier.fr/uploads/Image/f8/38126_051_shutterstock_530443366.jpg');
+            height: 100vh">
+</div> 
+<div class="example-wrapper">   
+    <ul>
+        {# <li>Your controller at <code><a href="{{ '/mnt/c/wamp64/www/wac/my_quiz/my_projet/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/mnt/c/wamp64/www/wac/my_quiz/my_projet/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li> #}
+    </ul>
+    
+</div>
+{% endblock %}

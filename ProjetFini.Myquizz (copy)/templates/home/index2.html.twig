@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .main{
+        width:90%;
+        height:auto;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .bonjour{
+        text-align : center;
+        color:white;
+    }
+    .start{
+        color:white;
+    }
+    .container{
+        width : 100%;
+        height:auto;
+        
+
+     
+    }
+   .container div{
+        background:yellow;
+        width:35%;
+        height:60px;
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+        font-size:20px;
+        margin-top:10px;
+        padding-top:10px;
+        border-radius:10px;
+                
+    }
+    .container div a{
+        text-decoration:none;
+        transition:0.5s;
+    }
+    .container div a:hover{
+        font-size:23px;
+        color:#21993E;
+    }
+    .start{
+        text-align:center;
+        font-size:30px;
+    }
+    body{
+        background-image: linear-gradient(to bottom, #5dafa1, #52a28c, #499578, #438763, #3e7a4e);
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('app_home') }}">Quizz</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+       <li class="nav-item">
+          <a class="nav-link active" aria-current="page" <a href="{{ path('app_c_r_u_d_index') }}">Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" <a href="{{ path('app_logout') }}">Deconnecté</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="example-wrapper">
+    <h1 class="bonjour">Bonjour<br></h1>
+   
+
+    <h2 class="start">Commencez votre quizz</h2>
+
+
+
+</div>
+
+<div class="main">
+{% for names in categorie %}
+        <div class="container">
+        <div><a href="/{{names.name}}/{{names.id}}">{{names.name}}</a></div>
+        </div>
+{% endfor %}
+</div>
+{% endblock %}
